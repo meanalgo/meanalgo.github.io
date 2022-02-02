@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      name="viewport"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Mean Reversion Stocks for Algo Trading</title>
+    <!-- Bootstrap core CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <main class="row">
+        <div class="col">
+          <h1>Mean Reversion Stocks for Algo Trading</h1>
+          <br/>
+          <h3>Here's a table of Mean Reversion Stocks from Vishal Mehta Strategy.</h3>
+          <br/>
+          <p>
+            Table will be updated <b>every morning at 8:50 AM IST </b>and in the
+            <b>evening after 5:30 PM IST</b>.
+          </p>
+          <div id="table-container"></div>
+        </div>
+      </main>
+      <footer class="row">
+        <div class="col">
+          <hr />
+          <p class="text-right">
+            <a href="https://github.com/derekeder/csv-to-html-table"
+              >CSV to HTML Table</a
+            >
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.csv.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="js/csv_to_html_table.js"></script>
+
+    <script>
+      var d = new Date();
+      var year = d.getFullYear().toString();
+      var month = d.getMonth() + 1;
+      var day = d.getDate();
+      if (day < 10) {
+        day = "0" + day.toString();
+      } else {
+          day = day.toString();
+      }
+      if (month < 10) {
+        month = "0" + month.toString();
+      } else {
+          month = month.toString();
+      }
+
+      CsvToHtmlTable.init({
+        csv_path: "data/" + year + month + day + "_mean_reversion.csv",
+        element: "table-container",
+        allow_download: true,
+        csv_options: {
+          separator: ",",
+          delimiter: '"',
+        },
+        datatables_options: {
+          paging: false,
+        },
+      });
+    </script>
+  </body>
+</html>
