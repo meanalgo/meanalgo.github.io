@@ -55,7 +55,7 @@ def get_stocks():
             df.reset_index(inplace=True)
             df.drop('index', axis=1, inplace=True)
         print(df)
-        df.to_csv(t.strftime('%Y%m%d_') +
+        df.to_csv(t.strftime('data/%Y%m%d_') +
                   'mean_reversion_chartink.csv', index=False)
 
 
@@ -67,7 +67,7 @@ def process_for_mean_reversion():
         print('There were no stocks in scanner today, returning')
         return
     t = dt.today()
-    df = pd.read_csv(t.strftime('%Y%m%d_') +
+    df = pd.read_csv(t.strftime('data/%Y%m%d_') +
                      'mean_reversion_chartink.csv', index_col=None)
     print(f'number of stocks :: {len(df)}')
     df = df[['nsecode', 'per_chg', 'close']]
@@ -85,7 +85,7 @@ def process_for_mean_reversion():
     if len(df) > 10:
         print('returning only first 10 stocks')
         df = df.head(10)
-    df.to_csv(t.strftime('%Y%m%d_')+'mean_reversion.csv')
+    df.to_csv(t.strftime('data/%Y%m%d_')+'mean_reversion.csv')
 
 
 if __name__ == "__main__":

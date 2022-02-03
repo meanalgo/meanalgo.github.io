@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 import yaml
 
 # enable dbug to see request and responses
-logging.basicConfig(level=logging.DEBUG, filename=__file__)
+logging.basicConfig(level=logging.DEBUG, filename=__file__+".log")
 
 # start of our program
 shoonya = ShoonyaApiPy()
@@ -21,7 +21,7 @@ pd.set_option('display.width', 1000)
 
 # credentials
 # yaml for parameters
-with open('cred_pushkar.yml') as f:
+with open('cred_rahul.yml') as f:
     cred = yaml.load(f, Loader=yaml.FullLoader)
     print(cred)
 
@@ -32,7 +32,7 @@ ret = shoonya.login(userid=cred['user'], password=cred['pwd'], twoFA=cred['facto
 def place_bracket_orders():
     #print('place Limit orders time :: ', dt.now(tz=zone))
     t = dt.today()
-    df = pd.read_csv(t.strftime('%Y%m%d_') +
+    df = pd.read_csv(t.strftime('data/%Y%m%d_') +
                      'mean_reversion.csv', index_col=None)
 
     for stock in df.itertuples():
@@ -46,3 +46,4 @@ def place_bracket_orders():
 
 if __name__ == "__main__":
     place_bracket_orders()
+    shoonya.logout()
