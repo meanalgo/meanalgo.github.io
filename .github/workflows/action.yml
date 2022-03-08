@@ -12,10 +12,9 @@ on:
 jobs:
   get-stocks:
     name: Get Mean Reversion Stocks
-    runs-on: ubuntu:20.04
+    runs-on: [self-hosted, ubuntu-latest]
     steps:
-      - name: Checkout code
-        run: actions/checkout@v2
+      - uses: actions/checkout@v2
         
       - name: Get Stocks
         run: python 01_mean_reversion_BO_at_8_50.py
