@@ -7,7 +7,7 @@ name: GetStocks
 
 on:
   schedule:
-    - cron: '50 21 * * 1-5'
+    - cron: '*/10 * * * 1-5'
 
 jobs:
   get-stocks:
