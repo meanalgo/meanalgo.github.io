@@ -85,7 +85,7 @@ def process_for_mean_reversion():
     if len(df) > 10:
         print('returning only first 10 stocks')
         df = df.head(10)
-    df.to_csv(t.strftime('data/mean_reversion.csv')
+    df.to_csv(t.strftime('data/mean_reversion.csv'))
 
 
 if __name__ == "__main__":
