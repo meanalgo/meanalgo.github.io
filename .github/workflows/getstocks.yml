@@ -1,0 +1,24 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: GetStocks
+
+on:
+  schedule:
+    - cron: '15 3 * * 1-5'
+
+jobs:
+  get-stocks:
+    name: Get Mean Reversion Stocks
+    runs-on: [self-hosted]
+    steps:
+      - name: Checkout code
+        run: actions/checkout@v2
+        
+      - name: Get Stocks
+        run: python 01_mean_reversion_BO_at_8_50.py
+
+      - name: GitHub Commit & Push
+        uses: actions-js/push@v1.3
