@@ -7,12 +7,12 @@ name: GetStocks
 
 on:
   schedule:
-    - cron: '1/5 * * * 1-5'
+    - cron: '5 * * * 1-5'
 
 jobs:
   get-stocks:
     name: Get Mean Reversion Stocks
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu:20.04
     steps:
       - name: Checkout code
         run: actions/checkout@v2
