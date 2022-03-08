@@ -12,7 +12,7 @@ on:
 jobs:
   get-stocks:
     name: Get Mean Reversion Stocks
-    runs-on: self-hosted
+    runs-on: [self-hosted, linux]
     steps:
       - name: Checkout code
         run: actions/checkout@v2
