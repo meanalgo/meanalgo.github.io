@@ -12,7 +12,7 @@ import requests
 from bs4 import BeautifulSoup
 import yaml
 
-# enable dbug to see request and responses
+# enable debug to see request and responses
 logging.basicConfig(level=logging.DEBUG, filename=__file__+".log")
 
 # start of our program
@@ -32,8 +32,7 @@ ret = shoonya.login(userid=cred['user'], password=cred['pwd'], twoFA=cred['facto
 def place_bracket_orders():
     #print('place Limit orders time :: ', dt.now(tz=zone))
     t = dt.today()
-    df = pd.read_csv(t.strftime('data/%Y%m%d_') +
-                     'mean_reversion.csv', index_col=None)
+    df = pd.read_csv(t.strftime('data/mean_reversion.csv', index_col=None)
 
     for stock in df.itertuples():
         print(stock.nsecode, stock.qty, stock.trigger_price,

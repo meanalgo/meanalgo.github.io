@@ -18,6 +18,9 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
+
+      - name: Delete Old csv files
+        run: rm -f data/*.csv
         
       - name: Get Stocks
         run: python 01_mean_reversion_BO_at_8_50.py
