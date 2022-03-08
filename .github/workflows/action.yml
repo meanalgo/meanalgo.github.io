@@ -19,7 +19,7 @@ jobs:
       - name: Get Stocks
         run: python 01_mean_reversion_BO_at_8_50.py
 
-      - name: GitHub Commit & Push
-        uses: actions-js/push@v1.3
+      - name: Commit & Push changes
+        uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
