@@ -7,7 +7,7 @@ name: GetStocks
 
 on:
   schedule:
-    - cron: '20 3 * * 1-5'
+    - cron: '0 3 * * 1-5'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
