@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Delete Old csv files
-        run: echo `date` && rm -force data/mean_reversion.csv
+        run: echo `date` && rm -f data/mean_reversion.csv
         
       - name: Get Stocks
         run: python 01_mean_reversion_BO_at_8_50.py
