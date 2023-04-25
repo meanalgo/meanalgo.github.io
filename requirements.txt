@@ -2,3 +2,4 @@ requests
 websocket_client
 pandas
 pyyaml
+beautifulsoup4
