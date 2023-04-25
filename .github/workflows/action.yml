@@ -17,10 +17,16 @@ jobs:
     name: Get Mean Reversion Stocks
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Python
+        uses: actions/setup-python@v4.6.0
+        
       - uses: actions/checkout@v2
 
       - name: Delete Old csv files
         run: echo `date` && rm -f data/mean_reversion.csv
+        
+      - name: Install python packages
+        run: python -m pip install -r requirements.txt
         
       - name: Get Stocks
         run: python 01_mean_reversion_BO_at_8_50.py
