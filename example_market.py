@@ -13,7 +13,7 @@ socket_opened = False
 
 #application callbacks
 def event_handler_order_update(message):
-    print("order event: " + str(message))
+    print(f"order event: {message}")
 
 
 def event_handler_quote_update(message):
@@ -28,8 +28,8 @@ def event_handler_quote_update(message):
     #c   Close price
     #ap  Average trade price
 
-    print("quote event: {0}".format(time.strftime('%d-%m-%Y %H:%M:%S')) + str(message))
-    
+    print(f"quote event: {time.strftime('%d-%m-%Y %H:%M:%S')} {message}")
+
 
 def open_callback():
     global socket_opened
@@ -64,9 +64,9 @@ with open('cred.yml') as f:
     cred = yaml.load(f, Loader=yaml.FullLoader)
     print(cred)
 
-ret = api.login(userid = cred['user'], password = cred['pwd'], twoFA=cred['factor2'], vendor_code=cred['vc'], api_secret=cred['apikey'], imei=cred['imei'])
+ret = api.login(userid=cred['user'], password=cred['pwd'], twoFA=cred['factor2'], vendor_code=cred['vc'], api_secret=cred['apikey'], imei=cred['imei'])
 
-if ret != None:   
+if ret:   
     while True:
         print('f => find symbol')    
         print('m => get quotes')
@@ -103,10 +103,10 @@ if ret != None:
             ret = api.searchscrip(exchange=exch, searchtext=query)
             print(ret)
 
-            if ret != None:
+            if ret:
                 symbols = ret['values']
                 for symbol in symbols:
-                    print('{0} token is {1}'.format(symbol['tsym'], symbol['token']))
+                    print(f"{symbol['tsym']} token is {symbol['token']}")
 
         elif prompt1 == 'd':
             exch  = 'NSE'
@@ -140,7 +140,7 @@ if ret != None:
 
         elif prompt1 == 's':
 
-            if socket_opened == True:
+            if socket_opened:
                 print('websocket already opened')
                 continue
 
