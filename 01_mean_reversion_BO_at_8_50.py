@@ -47,8 +47,8 @@ def get_stocks():
             print('There are no stocks in scanner today, returning')
             return
         df = pd.DataFrame()
-        for item in r.json()['data']:
-            df = df.append(item, ignore_index=True)
+        for item in r.json()['data']:            
+            df = pd.concat([df, pd.DataFrame([item])], ignore_index=True)
         if len(df) > 0:
             df.sort_values(by=['per_chg'], ascending=False, inplace=True)
             df.drop('sr', axis=1, inplace=True)
